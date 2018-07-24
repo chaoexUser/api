@@ -115,7 +115,7 @@ baseCurrencyId|基础币id|int
 
 ```
 
-### 获取实时行情(第二版)
+## 获取实时行情(第二版)
 
 - request_url：baseUrl + quote/v2/realTime
 - method：GET
