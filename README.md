@@ -70,7 +70,7 @@ tradeCurrencyNameEn|交易币英文名称|string
 }
 ```
 
-## 获取实时行情
+## 获取实时行情(第一版，即将废弃)
 
 * request_url：baseUrl + quote/realTime
 * method：GET
@@ -138,7 +138,7 @@ baseCurrencyId|基础币id|int
 |currencyId|	交易币id|	int|
 |baseCurrencyId|	基础币id	|int|
 |changeRate|	涨跌幅(涨为正数，跌为负数)|	decimal|
-|changeAmount|	涨跌额|	decimal|
+|changeAmount|	涨跌额(涨为正数，跌为负数)|	decimal|
 
 - response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 - example：
