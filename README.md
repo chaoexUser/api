@@ -30,6 +30,10 @@ baseCurrencyNameEn|基础币英文名称|string
 tradeCurrencyId|交易币id|int
 tradeCurrencyName|交易币名称|string
 tradeCurrencyNameEn|交易币英文名称|string
+amountLowLimit|最低买入数量限制|decimal
+amountHighLimit|最高买入数量限制|decimal
+sellAmountLowLimit|最低卖出数量限制|decimal
+sellAmountHighLimit|最高卖出数量限制|decimal
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 * example：
@@ -40,29 +44,41 @@ tradeCurrencyNameEn|交易币英文名称|string
     {
     "id": 1,
     "baseCurrencyId": "1",
-        "tradeCurrencyId": "4",
-        "baseCurrencyName": "比特币",
+        "tradeCurrencyId": "2",
+        "baseCurrencyName": "Bitcoin",
         "baseCurrencyNameEn": "BTC",
-        "tradeCurrencyName": "蝶恋币",
-        "tradeCurrencyNameEn": "DLC"
+        "tradeCurrencyName": "Litecoin",
+        "tradeCurrencyNameEn": "LTC",
+        "amountLowLimit": 0.0,
+        "amountHighLimit": 9999999.0,
+        "sellAmountLowLimit": 0.0,
+        "sellAmountHighLimit": 9999999.0
     },
     {
     "id": 2,
     "baseCurrencyId": "1",
-        "tradeCurrencyId": "2",
-        "baseCurrencyName": "比特币",
+        "tradeCurrencyId": "3",
+        "baseCurrencyName": "Bitcoin",
         "baseCurrencyNameEn": "BTC",
-        "tradeCurrencyName": "莱特币",
-        "tradeCurrencyNameEn": "LTC"
+        "tradeCurrencyName": "Ethereum",
+        "tradeCurrencyNameEn": "ETH",
+        "amountLowLimit": 0.01,
+        "amountHighLimit": 999999.0,
+        "sellAmountLowLimit": 0.01,
+        "sellAmountHighLimit": 999999.0
     },
     {
-    "id": 3,
-    "baseCurrencyId": "3",
-        "tradeCurrencyId": "4",
-        "baseCurrencyName": "以太坊",
-        "baseCurrencyNameEn": "ETH",
-        "tradeCurrencyName": "蝶恋币",
-        "tradeCurrencyNameEn": "DLC"
+    "id": 5,
+    "baseCurrencyId": "1",
+        "tradeCurrencyId": "6",
+        "baseCurrencyName": "Bitcoin",
+        "baseCurrencyNameEn": "BTC",
+        "tradeCurrencyName": "Lisk",
+        "tradeCurrencyNameEn": "LSK",
+        "amountLowLimit": 1.0E-4,
+        "amountHighLimit": 999999.0,
+        "sellAmountLowLimit": 1.0E-4,
+        "sellAmountHighLimit": 999999.0
     }
 ],
 "status": 200,
