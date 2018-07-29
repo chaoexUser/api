@@ -106,7 +106,7 @@ high|最高价|decimal
 last|最新成交价|decimal
 low|最低价|decimal
 sell|卖一价|decimal
-vol|交易币名称|decimal
+vol|交易币成交量|decimal
 currencyId|交易币id|int
 baseCurrencyId|基础币id|int
 
