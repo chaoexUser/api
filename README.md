@@ -4,9 +4,13 @@ ChaoEX科技API中文文档
 
 本文为链星科技官方提供的程序化交易接口API的说明文档，我们希望通过该文档的说明，开发者可用自行实现对于平台API申请、校验、调用、调试等功能，最终在链星科技的平台上实现程序化交易。
 
+# Platform Url
+
+* platform Url:https://www.chaoex.com
+
 # baseUrl
 
-* baseUrl:https://www.chaoex.com/12lian/
+* baseUrl:https://www.chaoex.com/unique/
 
 * 其他平台需要先进行邮件申请，并开通接口，之后才会开发程序化接口API
 
@@ -200,6 +204,7 @@ bids|买方委托单数组|Array
 >注意：每个数组对象的第一个元素为**价格**，第二个元素为**数量**
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+返回结果中的asks按价格升序排序，bids按照价格降序排序
 * example：
 
 ```json
@@ -249,7 +254,8 @@ tid|订单号|string
 type|交易类型，值为buy，或者sell|string
 buyOrSellTrade|交易类型id，1是buy，2是sell|int
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。返回数据
+按照时间升序排序
 * example：
 
 ```json
@@ -401,7 +407,7 @@ source|程序化交易对接类型，该值目前为5|int
 type|交易类型，该值目前为1|int
 token|请求认证，如果token过期后需要重新获取|string
 uid|用户id|int
-local|语种，繁体中文,可选zh_TW、en|string
+local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
@@ -441,7 +447,7 @@ fdPassword|交易密码|string
 source|程序化交易对接类型，该值目前为1|int
 token|请求认证，如果token过期后需要重新获取|string
 uid|用户id|int
-local|语种，繁体中文,可选zh_TW、en|string
+local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
@@ -472,7 +478,7 @@ item|description|type
 --------|--------|--------
 token|请求认证，如果token过期后需要重新获取|string
 uid|用户id|int
-local|语种，繁体中文,可选zh_TW、en|string
+local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
@@ -589,17 +595,18 @@ beginTime|查询开始日期，格式：2018-04-25|string
 endTime|查询结束日期，格式：2018-04-26|string
 start|查询起点，默认为1，最大为999|int
 size|查询数量|int
-status|委托单状态，未成交=0、部分成交=1、全部成交=2、撤单=4、全部状态=10|int
+status|委托单状态，未成交=0、部分成交=1、全部成交=2、撤单=4、为成交以及部分成交=11、全部状态=10（默认值10）|int
 buyOrSell|买卖方向，0是全部方向，1是buy，2是sell|int
 currencyId|交易币种id|int
 baseCurrencyId|基础币种id|int
 priceType|价格类型，默认为0，表示保留0位小数|
 token|请求认证，如果token过期后需要重新获取|string
 uid|用户id|int
-local|语种，繁体中文,可选zh_TW、en|string
+local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+返回数据按照orderTime降序排序
 
 * response_data:
 
