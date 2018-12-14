@@ -6,17 +6,17 @@ ChaoEX科技API中文文档
 
 # Platform Url
 
-* platform Url:https://www.chaoex.com
+* platform Url:https://www.chaoex.io
 
 # baseUrl
 
-* baseUrl:https://www.chaoex.com/unique/
+* baseUrl:https://www.chaoex.io/unique/
 
 * 其他平台需要先进行邮件申请，并开通接口，之后才会开发程序化接口API
 
 # 查询
 
-开发者可用通过查询接口获取到币种交易对、实时行情、交易深度、交易历史等信息。目前，查询功能不需要登录认证并传递token，如果以后查询的请求压力增大可用考虑增加token，并限制每日查询次数。
+开发者可用通过查询接口获取到币种交易对、实时行情、交易深度、交易历史等信息。目前，查询功能不需要登录认证并传递token，如果以后查询的请求压力增大可用考虑增加token，并限制每日查询次数。
 
 ## 获取币种交易对
 
@@ -39,7 +39,7 @@ amountHighLimit|最高买入数量限制|decimal
 sellAmountLowLimit|最低卖出数量限制|decimal
 sellAmountHighLimit|最高卖出数量限制|decimal
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 * example：
 
 ```json
@@ -114,7 +114,7 @@ vol|交易币成交量|decimal
 currencyId|交易币id|int
 baseCurrencyId|基础币id|int
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 * example：
 
 ```json
@@ -160,7 +160,7 @@ baseCurrencyId|基础币id|int
 |changeRate|	涨跌幅(涨为正数，跌为负数)|	decimal|
 |changeAmount|	涨跌额(涨为正数，跌为负数)|	decimal|
 
-- response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+- response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 - example：
 
 ```
@@ -182,7 +182,7 @@ baseCurrencyId|基础币id|int
 }
 ```
 
-## 获取交易深度
+## 获取交易深度
 
 * request_url：baseUrl + quote/tradeDeepin
 * method：GET
@@ -203,7 +203,7 @@ bids|买方委托单数组|Array
 
 >注意：每个数组对象的第一个元素为**价格**，第二个元素为**数量**
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 返回结果中的asks按价格升序排序，bids按照价格降序排序
 * example：
 
@@ -228,7 +228,7 @@ bids|买方委托单数组|Array
 }
 ```
 
-## 获取交易历史
+## 获取交易历史
 
 * request_url：baseUrl + quote/tradeHistory
 * method：GET
@@ -245,16 +245,16 @@ limit|获得的深度的档数|int
 item|description|type
 --------|--------|--------
 date|交易时间|string
-price|交易价格|decimal
-amount|交易金额|decimal
-number|交易数量|decimal
-coinCode|交易币id|int
+price|交易价格|decimal
+amount|交易金额|decimal
+number|交易数量|decimal
+coinCode|交易币id|int
 baseCurrencyId|基础币id|int
 tid|订单号|string
 type|交易类型，值为buy，或者sell|string
 buyOrSellTrade|交易类型id，1是buy，2是sell|int
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。返回数据
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。返回数据
 按照时间升序排序
 * example：
 
@@ -366,7 +366,7 @@ uid|用户id|int
 uname|用户姓名，目前为空|string
 isShow|是否展示高级选项，0是不可以，1是可以|int
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 
 ```json
 {
@@ -410,7 +410,7 @@ uid|用户id|int
 local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 
 * response_data:
 
@@ -450,7 +450,7 @@ uid|用户id|int
 local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 
 * response_data:
 
@@ -481,7 +481,7 @@ uid|用户id|int
 local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 
 * response_data:
 
@@ -605,7 +605,7 @@ uid|用户id|int
 local|语种，繁体中文,可选zh_TW、en_US|string
 timestamp|时间戳|string
 
-* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
 返回数据按照orderTime降序排序
 
 * response_data:
