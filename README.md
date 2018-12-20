@@ -6,11 +6,11 @@ ChaoEX科技API中文文档
 
 # Platform Url
 
-* platform Url:https://www.chaoex.io
+* platform Url:https://www.chaoex.info
 
 # baseUrl
 
-* baseUrl:https://www.chaoex.io/unique/
+* baseUrl:https://www.chaoex.info/unique/
 
 * 其他平台需要先进行邮件申请，并开通接口，之后才会开发程序化接口API
 
