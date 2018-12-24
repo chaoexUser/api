@@ -228,6 +228,72 @@ bids|买方委托单数组|Array
 }
 ```
 
+## 获取所有在线交易对实时行情
+
+- request_url：baseUrl + quote/v2/allRealTime
+- method：GET
+- parameter：null
+
+- response_data:
+
+|Item      |description  |type   |
+| -------- | :-----:|  :-------:  |
+|buy	|买一价|	decimal|
+|high	|最高价|	decimal|
+|last	|最新成交价|	decimal|
+|low	|最低价|	decimal|
+|sell	|卖一价|	decimal|
+|vol	|交易币成交量|	decimal|
+|currencyId|	交易币名称|	int|
+|tradeCurrencyName|	交易币id|	string|
+|baseCurrencyId|	基础币id	|int|
+|baseCurrencyName|	基础币名称	|string|
+|changeRate|	涨跌幅(涨为正数，跌为负数)|	decimal|
+|changeAmount|	涨跌额(涨为正数，跌为负数)|	decimal|
+
+- response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+- example：
+
+```
+{
+    {
+	  "attachment": [
+	    {
+	      "buy": 0.008025,
+	      "high": 0.0,
+	      "last": 0.008025,
+	      "low": 0.0,
+	      "sell": null,
+	      "vol": 0.0,
+	      "currencyId": 2,
+	      "baseCurrencyId": 1,
+	      "tradeCurrencyName": "LTC",
+	      "baseCurrencyName": "BTC",
+	      "changeRate": 0.0,
+	      "changeAmount": 0.0,
+	      "rmbScale": 0.0
+	    },
+	    {
+	      "buy": 0.0278,
+	      "high": 0.0,
+	      "last": 0.028,
+	      "low": 0.0,
+	      "sell": 0.028,
+	      "vol": 0.0,
+	      "currencyId": 3,
+	      "baseCurrencyId": 1,
+	      "tradeCurrencyName": "ETH",
+	      "baseCurrencyName": "BTC",
+	      "changeRate": 0.0,
+	      "changeAmount": 0.0,
+	      "rmbScale": 0.0
+	    }
+    ],
+    "message": null,
+    "status": 200
+}
+```
+
 ## 获取交易历史
 
 * request_url：baseUrl + quote/tradeHistory
