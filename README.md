@@ -576,7 +576,7 @@ item|description|type
 currencyId|基础币种id|int
 orderNo|委托单号|string
 fdPassword|交易密码|string
-source|程序化交易对接类型，该值目前为1|int
+source|程序化交易对接类型，该值目前为5|int
 token|请求认证，如果token过期后需要重新获取|string
 uid|用户id|int
 local|语种，繁体中文,可选zh_TW、en_US|string
