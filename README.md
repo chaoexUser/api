@@ -706,7 +706,7 @@ item|description|type
 buyOrSell|买卖方向，1是buy，2是sell|int
 currencyId|交易币种|int
 baseCurrencyId|基础币种|int
-fdPassword|交易密码,可以为空,但必须传|string
+fdPassword|交易密码 (可以为空,但必须传fdPassword="")|string
 num|数量，保留小数点后最多8位小数|decimal
 price|价格，保留小数点后最多8位小数|decimal
 source|程序化交易对接类型，该值目前为5|int
