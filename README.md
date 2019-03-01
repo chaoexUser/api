@@ -451,7 +451,7 @@ rsa_public_key_1024.pem
 
 ```javascript
 
-//timestamp格式为：2018-05-02T18:30:00Z
+//timestamp格式为：2018-05-02T18:30:00Z (注：Javascript使用的是这样的格式 java使用的是13位毫秒级时间戳)
 
 const signature = crypto.createSign('sha256');
 signature.write(timestamp.toString());
@@ -484,7 +484,7 @@ item|description|type
 email|平台登录名（手机号或邮箱）|string
 pwd|平台登录密码（经过加盐加密之后的pwd)|string
 timestamp|时间戳 (13位毫秒级时间戳)|string
-sign|签名 (下方有签名Demo)|string
+sign|签名 (使用私钥对timestamp进行签名)|string
 
 ## 前端密码加密规则
 
