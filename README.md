@@ -549,6 +549,13 @@ public class SignLoginDemo {
 		params.put("sign", sign);
 		String post = HttpUtil.post(url, params);
 		System.out.println(post);
+		
+		/**
+		 * 	需要注意：
+		 * 	pwd：必须经过加盐加密。
+		 * 	timestamp：发送接口的值和进行sign加密的值 必须是同一个。
+		 *  
+		 */
 	}
 	
 }
@@ -699,7 +706,7 @@ item|description|type
 buyOrSell|买卖方向，1是buy，2是sell|int
 currencyId|交易币种|int
 baseCurrencyId|基础币种|int
-fdPassword|交易密码,可以为空|string
+fdPassword|交易密码,可以为空,但必须传|string
 num|数量，保留小数点后最多8位小数|decimal
 price|价格，保留小数点后最多8位小数|decimal
 source|程序化交易对接类型，该值目前为5|int
@@ -892,8 +899,8 @@ item|description|type
 --------|--------|--------
 beginTime|查询开始日期，格式：2018-04-25|string
 endTime|查询结束日期，格式：2018-04-26|string
-start|查询起点，默认为1，最大为999|int
-size|查询数量，最小值1，最大值20 |int
+start|查询起点，默认为1，最大为999 (start=第几页)|int
+size|查询数量，最小值1，最大值20 (size=每页多少条数据)|int
 status|委托单状态，未成交=0、部分成交=1、全部成交=2、撤单=4、为成交以及部分成交=11、全部状态=10（默认值10）|int
 buyOrSell|买卖方向，0是全部方向，1是buy，2是sell|int
 currencyId|交易币种id|int
