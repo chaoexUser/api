@@ -476,7 +476,7 @@ console.log(signature.sign(APISECRET, 'hex'));
 * request_url：baseUrl + user/signLogin
 * method：POST
 * Content-Type:application/x-www-form-urlencoded
-* Accept:application/json, text/plain, */*
+* Accept:application/json, text/plain, 
 * parameter：
 
 item|description|type
@@ -554,6 +554,7 @@ public class SignLoginDemo {
 		 * 	需要注意：
 		 * 	pwd：必须经过加盐加密。
 		 * 	timestamp：发送接口的值和进行sign加密的值 必须是同一个。
+		 * 	如果请求发生403情况,请在Header加User-Agent。否则CDN会认为该请求在攻击,会进行拦截。
 		 *  
 		 */
 	}
