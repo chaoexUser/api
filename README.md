@@ -553,8 +553,8 @@ public class SignLoginDemo {
 	
 }
 ```
-
-```MD5Util工具类
+### MD5Util工具类
+```
 import java.security.MessageDigest;
 
 public class MD5Util {
@@ -595,7 +595,7 @@ public class MD5Util {
         String afterEncrypt = null;
 
         try {
-        	// 盐值
+            // 盐值
             String salt = "dig?F*ckDang5PaSsWOrd&%(12lian0160630).";
             // pwd+盐值
             afterFormat = pwd + salt;
@@ -609,8 +609,8 @@ public class MD5Util {
     
 }
 ```
-
-```RSAUtil工具类
+### RSAUtil工具类
+```
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.SimpleDateFormat;
