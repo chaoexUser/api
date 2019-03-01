@@ -430,16 +430,22 @@ public-key|您的公钥将会保存在平台，下文会详细说明公钥的生
 
 1.请您根据**RSA**生成自己的KeyPair（公钥/私钥）
 ```
-openssl
-genrsa -out rsa_private_key.pem 1024
-rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
+# 步骤1  生成rsa私钥 （注：该步骤生成的私钥只为供第二步使用，并无实际用处）
+openssl genrsa -out rsa_private_key_1024.pem 1024
 
-//生成
-rsa_private_key.pem
-rsa_public_key.pem
+# 步骤2  将上一步生成的rsa私钥转换成PKCS#8编码（注：该步骤生成的私钥构成实际密钥对的私钥）
+openssl pkcs8 -topk8 -in rsa_private_key_1024.pem -out pkcs8_rsa_private_key_1024.pem -nocrypt
+
+# 步骤3  导出rsa公钥 （注：该步骤生成的公钥构成实际密钥对的公钥）
+openssl rsa -in rsa_private_key_1024.pem -out rsa_public_key_1024.pem -pubout
+
+//私钥文件
+pkcs8_rsa_private_key_1024.pem
+//公钥文件
+rsa_public_key_1024.pem
 ```
 
-2.然后，将您的public-key（也就是rsa_public_key.pem）、用户名、用户uid发送到**business-cn@chaoex.com.hk**，进行申请。
+2.然后，将您的public-key（也就是rsa_public_key_1024.pem）、用户名、用户uid发送到**business-cn@chaoex.com.hk**，进行申请。
 3.每次申请调用登录、下单、撤单等接口API权限的时候，请您使用sha256算法并通过私钥将参数签名，我在这里给出一个Javascript的实现。
 4.timestamp为最新时间
 
@@ -475,10 +481,10 @@ console.log(signature.sign(APISECRET, 'hex'));
 
 item|description|type
 --------|--------|--------
-email|平台登录名|string
-pwd|平台登录密码|string
-timestamp|时间戳|string
-sign|签名|string
+email|平台登录名（手机号或邮箱）|string
+pwd|平台登录密码（经过加盐加密之后的pwd)|string
+timestamp|时间戳 (13位毫秒级时间戳)|string
+sign|签名 (下方有签名Demo)|string
 
 ## 前端密码加密规则
 
