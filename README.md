@@ -484,7 +484,7 @@ item|description|type
 email|平台登录名（手机号或邮箱）|string
 pwd|平台登录密码（经过加盐加密之后的pwd)|string
 timestamp|时间戳 (13位毫秒级时间戳)|string
-sign|签名 (使用私钥对timestamp进行签名)|string
+sign|签名 (使用私钥对timestamp进行签名,SHA256withRSA算法)|string
 
 ## 前端密码加密规则
 
@@ -628,6 +628,7 @@ import sun.misc.BASE64Decoder;
 public class RSAUtil {
 	
 	public static final String KEY_ALGORITHM = "RSA";
+	//加密算法
 	public static final String SIGNATURE_ALGORITHM = "SHA256withRSA";
 	public static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 	
