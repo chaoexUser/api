@@ -493,6 +493,7 @@ const salt = 'dig?F*ckDang5PaSsWOrd&%(12lian0160630).'
 let pwd = md5(pwd + salt)
 ```
 
+
 * response_data:
 
 返回值在data.attachment中，其中开发者需要的值有：
@@ -519,6 +520,166 @@ isShow|是否展示高级选项，0是不可以，1是可以|int
     "status": 200
 }
 ```
+## signLogin接口对接最为麻烦,在此给出一个java实现的Demo
+```
+import java.util.HashMap;
+import java.util.Map;
+
+public class SignLoginDemo {
+	
+	public static void main(String[] args) {
+		// 访问url
+		String url = "https://www.chaoex.info/unique/user/signLogin";
+		// 登陆账号
+		String email = "123456@163.com";
+		// 登陆密码  详见MD5Util工具类
+		String pwd = MD5Util.encryptPwd("Abc123456");
+		// 时间戳  获取13位毫秒级时间戳
+		String timestamp = System.currentTimeMillis()+"";
+		// 私钥  建议用pkcs8
+		String secretPrivate = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAK......";
+		// sign签名  详见RSAUtil工具类
+		String sign = RSAUtil.sign(secretPrivate, timestamp);
+		
+		//以下是调用方式,可以用自己习惯的方式。  demo选择的方式是HttpClient,不做详细说明。
+		Map<String, String> params = new HashMap<String,String>();
+		params.put("email", email);
+		params.put("pwd", pwd);
+		params.put("timestamp", timestamp);
+		params.put("sign", sign);
+		String post = HttpUtil.post(url, params);
+		System.out.println(post);
+	}
+	
+}
+```
+
+```MD5Util工具类
+import java.security.MessageDigest;
+
+public class MD5Util {
+
+    public MD5Util() {
+    }
+
+    public static final String encrypt(String s) {
+        char[] hexDigits = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+        try {
+            byte[] btInput = s.getBytes();
+            // 获得MD5摘要算法的 MessageDigest 对象
+            MessageDigest mdInst = MessageDigest.getInstance("MD5");
+            // 使用指定的字节更新摘要
+            mdInst.update(btInput);
+            // 获得密文
+            byte[] md = mdInst.digest();
+            // 把密文转换成十六进制的字符串形式
+            int j = md.length;
+            char[] str = new char[j * 2];
+            int k = 0;
+
+            for(int i = 0; i < j; ++i) {
+                byte byte0 = md[i];
+                str[k++] = hexDigits[byte0 >>> 4 & 15];
+                str[k++] = hexDigits[byte0 & 15];
+            }
+
+            return new String(str);
+        } catch (Exception var10) {
+            return null;
+        }
+    }
+
+    public static final String encryptPwd(String pwd) {
+        String afterFormat = null;
+        String afterEncrypt = null;
+
+        try {
+        	// 盐值
+            String salt = "dig?F*ckDang5PaSsWOrd&%(12lian0160630).";
+            // pwd+盐值
+            afterFormat = pwd + salt;
+            // 去进行MD5加密
+            afterEncrypt = encrypt(afterFormat);
+        } catch (Exception var4) {
+        }
+
+        return afterEncrypt;
+    }
+    
+}
+```
+
+```RSAUtil工具类
+import java.security.*;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.text.SimpleDateFormat;
+
+import sun.misc.BASE64Decoder;
+
+public class RSAUtil {
+	
+	public static final String KEY_ALGORITHM = "RSA";
+	public static final String SIGNATURE_ALGORITHM = "SHA256withRSA";
+	public static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+	
+	public static String sign(String secretPrivate, String timestamp) {
+	    String out = null;
+	    try {
+	        out = sign(timestamp.getBytes(), secretPrivate);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return out;
+	}
+
+	public static String sign(byte[] data, String privateKey) throws Exception {
+	    // 解密由base64编码的私钥
+	    byte[] keyBytes = decryptBASE64(privateKey);
+
+	    // 构造PKCS8EncodedKeySpec对象
+	    PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
+
+	    // KEY_ALGORITHM 指定的加密算法
+	    KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+
+	    // 取私钥匙对象
+	    PrivateKey priKey = keyFactory.generatePrivate(pkcs8KeySpec);
+
+	    // 用私钥对信息生成数字签名
+	    Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
+	    signature.initSign(priKey);
+	    signature.update(data);
+
+	    return bytes2Hex(signature.sign());
+
+	}
+
+	public static byte[] decryptBASE64(String key) throws Exception {
+	    return (new BASE64Decoder()).decodeBuffer(key);
+	}
+
+	public static String bytes2Hex(byte[] bytes) {
+	    StringBuilder stringBuilder = new StringBuilder("");
+	    if (bytes == null || bytes.length <= 0) {
+	        return null;
+	    }
+	    for (int i = 0; i < bytes.length; i++) {
+	        int v = bytes[i] & 0xFF;
+	        String hv = Integer.toHexString(v);
+	        if (hv.length() < 2) {
+	            stringBuilder.append(0);
+	        }
+	        stringBuilder.append(hv);
+	    }
+	    return stringBuilder.toString();
+	}
+	
+
+}
+```
+
 
 
 # 委托下单
