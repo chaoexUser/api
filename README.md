@@ -903,7 +903,7 @@ beginTime|查询开始日期，格式：2018-04-25|string
 endTime|查询结束日期，格式：2018-04-26|string
 start|查询起点，默认为1，最大为999 (start=第几页)|int
 size|查询数量，最小值1，最大值20 (size=每页多少条数据)|int
-status|委托单状态，未成交=0、部分成交=1、全部成交=2、撤单=4、为成交以及部分成交=11、全部状态=10（默认值10）|int
+status|委托单状态，未成交=0、部分成交=1、全部成交=2、撤单=4、未成交以及部分成交=11、全部状态=10（默认值10）|int
 buyOrSell|买卖方向，0是全部方向，1是buy，2是sell|int
 currencyId|交易币种id|int
 baseCurrencyId|基础币种id|int
