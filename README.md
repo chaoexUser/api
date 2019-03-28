@@ -1061,7 +1061,7 @@ tradeNum|成交数量|decimal
 
 item|description|type
 --------|--------|--------
-orderIds|订单号 如果查询单个订单号 如：'订单号A'  如果查询批量订单号如：'订单号A,订单号B,订单号C'  注意,该参数首尾有符号'    |string
+orderIds|订单号 如果查询单个订单号 如：'订单号A'      如果查询批量订单号   如：'订单号A,订单号B,订单号C'  注意,该参数首尾有符号'    |string
 currencyId|交易币种id|int
 baseCurrencyId|计价币种id|int
 uid|用户id|int
