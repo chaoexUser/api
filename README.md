@@ -1045,3 +1045,103 @@ tradeNum|成交数量|decimal
     "status": 200
 }
 ```
+
+
+# 委托单查询-通过订单号
+
+通过订单号和交易币id和计价币id,查询订单信息。
+
+## 描述
+
+* request_url：baseUrl + user/trOrderByOrderIds
+* method：POST
+* Content-Type:application/x-www-form-urlencoded
+* Accept:application/json, text/plain, */*
+* parameter：
+
+item|description|type
+--------|--------|--------
+orderIds|订单号 如果查询单个订单号 '订单号A'  如果查询批量订单号'订单号A,订单号B,订单号C'  注意,该参数首尾有符号'    |string
+currencyId|交易币种id|int
+baseCurrencyId|基础币种id|int
+uid|用户id|int
+
+
+* response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
+
+
+* response_data:
+
+item|description|type
+--------|--------|--------
+attachment|订单信息|int
+message|信息|object
+status|状态|int
+
+attachment
+
+item|description|type
+--------|--------|--------
+averagePrice|平均委托金额|decimal
+baseCurrencyId|基础币id|int
+baseCurrencyName|基础币名称|string
+baseCurrencyNameEn|基础币简称|string
+buyOrSell|买卖方向，0是全部方向，1是buy，2是sell|int
+currencyName|数字货币全称|string
+currencyNameEn|数字货币简称|string
+dealAmount|成交金额|decimal
+fee|交易费用|decimal
+num|委托数量|decimal
+orderNo|委托单号|string
+orderTime|委托时间|string
+price|委托价格|decimal
+remainNum|剩余数量|decimal
+status|委托单状态，未成交=0、部分成交=1、全部成交=2、全部撤单=4、部分成交后撤单=5、|int
+tradeNum|成交数量|decimal
+
+```json
+{
+    "attachment": [
+        {
+            "start": 1,
+            "size": 20,
+            "total": 0,
+            "orderBy": "desc",
+            "ctbOrderId": 1,
+            "orderNo": "15060727834780010190431100654470",
+            "customerUuid": "ead60e1231904f4fa5733b6cc13c15c9",
+            "currencyId": 6,
+            "baseCurrencyId": 1,
+            "buyOrSell": 1,
+            "type": 1,
+            "num": 12,
+            "tradeNum": 12,
+            "cancelNum": 0,
+            "remainNum": 0,
+            "price": 0.0015602,
+            "source": 1,
+            "orderTime": "2017-09-22 17:33:03",
+            "fee": 0,
+            "freezeFee": 0,
+            "freezeAmount": 0,
+            "riskFlag": 1,
+            "cancelTime": "2017-09-22 17:33:03",
+            "averagePrice": 0.0015602,
+            "status": 2,
+            "createTime": "2017-09-22 17:33:03",
+            "beginTime": null,
+            "endTime": null,
+            "createBy": null,
+            "lastEditTime": "2017-09-22 18:03:47",
+            "lastEditBy": null,
+            "dealAmount": null,
+            "currencyNameEn": "LSK",
+            "currencyName": "Lisk",
+            "baseCurrencyNameEn": "BTC",
+            "baseCurrencyName": "Bitcoin"
+        }
+    ],
+    "message": null,
+    "status": 200
+}
+```
