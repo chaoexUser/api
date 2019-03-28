@@ -1061,10 +1061,17 @@ tradeNum|成交数量|decimal
 
 item|description|type
 --------|--------|--------
-orderIds|订单号 如果查询单个订单号 如：'订单号A'      如果查询批量订单号   如：'订单号A,订单号B,订单号C'  注意,该参数首尾有符号'    |string
+orderIds|订单号  下方有详细说明|string
 currencyId|交易币种id|int
 baseCurrencyId|计价币种id|int
 uid|用户id|int
+
+orderIds参数详细说明
+单个订单号查询：'订单号A'    
+批量订单号查询：'订单号A,订单号B,订单号C'  
+注意：
+	1.该参数首尾都有单引号'     'xxxxx'
+	2.如果需要批量查询中间以逗号隔开    'xxxx,xxxx,xxxx'
 
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
