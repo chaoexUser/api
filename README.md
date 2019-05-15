@@ -1068,10 +1068,10 @@ uid|用户id|int
 
 * orderIds参数详细说明:
 * 1.单个订单号查询：'订单号A'      
-* 2.批量订单号查询：'订单号A,订单号B,订单号C'  
+* 2.批量订单号查询：'订单号A','订单号B','订单号C'  
 *   注意：
 * 	1.该参数首尾都有单引号'     'xxxxx'   。
-* 	2.如果需要批量查询中间以逗号隔开    'xxxx,xxxx,xxxx'   。
+* 	2.如果需要批量查询中间以逗号隔开    'xxxx','xxxx','xxxx'   。
 
 
 * response description：当接口返回的status 为200时，则attachment包含以下数据，如果status参数不为200 ，则出现异常。
